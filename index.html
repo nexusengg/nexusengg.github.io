@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>NexusEng Automation</title>
 
   <style>
+
     *{
       margin:0;
       padding:0;
@@ -13,15 +17,23 @@
       font-family:Arial, Helvetica, sans-serif;
     }
 
+    html{
+      scroll-behavior:smooth;
+    }
+
     body{
-      background:#050d22;
+      background:#030b1f;
       color:white;
       overflow-x:hidden;
     }
 
     a{
       text-decoration:none;
-      color:white;
+    }
+
+    img{
+      width:100%;
+      display:block;
     }
 
     .container{
@@ -37,7 +49,7 @@
       width:100%;
       top:0;
       z-index:1000;
-      background:rgba(3,10,30,0.92);
+      background:rgba(2,8,25,0.92);
       backdrop-filter:blur(10px);
       border-bottom:1px solid rgba(255,255,255,0.08);
     }
@@ -50,9 +62,9 @@
     }
 
     .logo{
-      font-size:28px;
+      font-size:34px;
       font-weight:800;
-      color:#4db8ff;
+      color:#38a7ff;
     }
 
     .logo span{
@@ -61,16 +73,17 @@
 
     .nav-links{
       display:flex;
-      gap:30px;
+      gap:35px;
     }
 
     .nav-links a{
-      color:#d4e4ff;
+      color:#d7e8ff;
+      font-size:18px;
       transition:0.3s;
     }
 
     .nav-links a:hover{
-      color:#4db8ff;
+      color:#38a7ff;
     }
 
     /* HERO */
@@ -80,41 +93,55 @@
       display:flex;
       align-items:center;
       position:relative;
-      padding-top:100px;
+      overflow:hidden;
+      padding-top:120px;
     }
 
     .hero::before{
       content:"";
       position:absolute;
-      inset:0;
-      background:
-      radial-gradient(circle at top left,#0d2c68 0%,transparent 35%),
-      radial-gradient(circle at bottom right,#0f4b6f 0%,transparent 30%);
-      opacity:0.8;
+      width:900px;
+      height:900px;
+      background:radial-gradient(circle,#0f4f8c 0%,transparent 70%);
+      top:-300px;
+      right:-200px;
+      opacity:0.35;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      width:700px;
+      height:700px;
+      background:radial-gradient(circle,#003cff 0%,transparent 70%);
+      bottom:-300px;
+      left:-200px;
+      opacity:0.15;
     }
 
     .hero-content{
       position:relative;
-      z-index:1;
-      max-width:900px;
+      z-index:2;
+      max-width:950px;
     }
 
     .hero h1{
-      font-size:72px;
-      line-height:1.1;
-      margin-bottom:25px;
+      font-size:82px;
+      line-height:1.05;
+      margin-bottom:30px;
+      font-weight:800;
     }
 
     .hero h1 span{
-      color:#4db8ff;
+      color:#38a7ff;
     }
 
     .hero p{
-      font-size:22px;
-      color:#c8d9f3;
-      line-height:1.7;
-      margin-bottom:40px;
-      max-width:850px;
+      font-size:24px;
+      line-height:1.8;
+      color:#c9daf7;
+      margin-bottom:45px;
+      max-width:900px;
     }
 
     .hero-buttons{
@@ -124,24 +151,28 @@
     }
 
     .btn{
-      padding:16px 30px;
+      padding:18px 34px;
       border-radius:50px;
+      font-size:17px;
       font-weight:700;
       transition:0.3s;
+      display:inline-block;
     }
 
     .btn-primary{
       background:#2575ff;
+      color:white;
     }
 
     .btn-primary:hover{
-      background:#4a90ff;
+      background:#3e8cff;
       transform:translateY(-3px);
     }
 
     .btn-secondary{
-      border:1px solid rgba(255,255,255,0.2);
-      color:#dbe9ff;
+      border:1px solid rgba(255,255,255,0.15);
+      color:#d7e8ff;
+      background:rgba(255,255,255,0.03);
     }
 
     .btn-secondary:hover{
@@ -151,30 +182,30 @@
     /* SECTION */
 
     section{
-      padding:100px 0;
+      padding:120px 0;
     }
 
     .section-title{
-      font-size:48px;
-      margin-bottom:60px;
+      font-size:60px;
       text-align:center;
+      margin-bottom:70px;
+      font-weight:800;
     }
 
     .section-title span{
-      color:#4db8ff;
+      color:#38a7ff;
     }
 
     /* PROJECT CARD */
 
     .project-card{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:50px;
+      grid-template-columns:1.15fr 1fr;
+      gap:60px;
       background:rgba(255,255,255,0.04);
       border:1px solid rgba(255,255,255,0.08);
-      border-radius:30px;
-      overflow:hidden;
-      padding:40px;
+      border-radius:35px;
+      padding:45px;
       align-items:center;
       transition:0.3s;
     }
@@ -182,142 +213,188 @@
     .project-card:hover{
       transform:translateY(-8px);
       border-color:#2575ff;
-      box-shadow:0 20px 60px rgba(0,0,0,0.4);
+      box-shadow:0 25px 70px rgba(0,0,0,0.45);
+    }
+
+    .project-image{
+      border-radius:25px;
+      overflow:hidden;
+      background:#07132c;
+      padding:15px;
     }
 
     .project-image img{
-      width:100%;
-      border-radius:20px;
+      border-radius:18px;
       object-fit:cover;
     }
 
     .project-content h3{
-      font-size:42px;
-      margin-bottom:20px;
+      font-size:58px;
+      line-height:1.1;
+      margin-bottom:25px;
+      font-weight:800;
     }
 
     .project-content p{
-      color:#c7d7f5;
-      font-size:18px;
+      font-size:22px;
       line-height:1.8;
-      margin-bottom:25px;
+      color:#d1def7;
+      margin-bottom:35px;
     }
 
     .feature-list{
       display:flex;
       flex-wrap:wrap;
-      gap:15px;
-      margin-bottom:35px;
+      gap:16px;
+      margin-bottom:40px;
     }
 
     .feature{
-      padding:12px 18px;
-      border-radius:40px;
-      background:#112850;
+      background:#102b5f;
       color:#7ecbff;
-      font-size:14px;
+      padding:14px 20px;
+      border-radius:40px;
+      font-size:15px;
       font-weight:700;
     }
 
-    /* PLACEHOLDER FUTURE PROJECTS */
+    /* FUTURE PROJECTS */
 
     .future-projects{
-      margin-top:60px;
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:30px;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:35px;
     }
 
     .placeholder-card{
-      background:rgba(255,255,255,0.03);
+      background:rgba(255,255,255,0.04);
       border:2px dashed rgba(255,255,255,0.15);
-      border-radius:25px;
-      min-height:240px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      padding:30px;
+      border-radius:30px;
+      padding:40px;
+      min-height:260px;
+      transition:0.3s;
+    }
+
+    .placeholder-card:hover{
+      transform:translateY(-5px);
+      border-color:#2575ff;
     }
 
     .placeholder-card h4{
-      font-size:26px;
-      margin-bottom:12px;
+      font-size:30px;
+      margin-bottom:18px;
       color:#7ecbff;
     }
 
     .placeholder-card p{
-      color:#aebed9;
-      line-height:1.7;
+      color:#c8d9f5;
+      line-height:1.8;
+      font-size:18px;
     }
 
     /* CONTACT */
 
     .contact-box{
-      text-align:center;
       background:rgba(255,255,255,0.04);
-      border-radius:30px;
-      padding:60px 30px;
       border:1px solid rgba(255,255,255,0.08);
+      border-radius:35px;
+      padding:80px 40px;
+      text-align:center;
     }
 
     .contact-box h2{
-      font-size:42px;
-      margin-bottom:20px;
+      font-size:54px;
+      margin-bottom:25px;
+      font-weight:800;
     }
 
     .contact-box p{
-      color:#c8d9f3;
-      font-size:18px;
-      margin-bottom:25px;
+      font-size:22px;
+      color:#c8d9f5;
+      line-height:1.8;
+      max-width:900px;
+      margin:auto;
     }
 
     .contact-links{
+      margin-top:40px;
       display:flex;
       justify-content:center;
       gap:20px;
       flex-wrap:wrap;
     }
 
+    /* FOOTER */
+
     footer{
-      padding:40px 0;
-      text-align:center;
-      color:#9db3d7;
       border-top:1px solid rgba(255,255,255,0.08);
+      padding:40px 20px;
+      text-align:center;
+      color:#9fb6dd;
+      font-size:16px;
     }
 
-    @media(max-width:950px){
+    /* MOBILE */
+
+    @media(max-width:1100px){
 
       .hero h1{
-        font-size:50px;
+        font-size:64px;
       }
 
       .project-card{
         grid-template-columns:1fr;
       }
 
+      .project-content h3{
+        font-size:46px;
+      }
+
+    }
+
+    @media(max-width:768px){
+
       .nav-links{
         display:none;
       }
-    }
 
-    @media(max-width:600px){
+      .hero{
+        min-height:auto;
+        padding:180px 0 120px;
+      }
 
       .hero h1{
-        font-size:40px;
+        font-size:46px;
+      }
+
+      .hero p{
+        font-size:20px;
       }
 
       .section-title{
-        font-size:36px;
+        font-size:42px;
       }
 
       .project-content h3{
-        font-size:30px;
+        font-size:36px;
       }
+
+      .project-content p{
+        font-size:18px;
+      }
+
+      .contact-box h2{
+        font-size:38px;
+      }
+
+      .contact-box p{
+        font-size:18px;
+      }
+
     }
 
   </style>
+
 </head>
 
 <body>
@@ -325,6 +402,7 @@
   <!-- NAVBAR -->
 
   <nav>
+
     <div class="container nav-wrapper">
 
       <div class="logo">
@@ -338,33 +416,38 @@
       </div>
 
     </div>
+
   </nav>
 
   <!-- HERO -->
 
   <section class="hero">
 
-    <div class="container hero-content">
+    <div class="container">
 
-      <h1>
-        Engineering <span>Automation</span><br>
-        Systems for Manufacturing Workflows
-      </h1>
+      <div class="hero-content">
 
-      <p>
-        CAD workflow automation, BOM extraction systems, PDF drawing processing,
-        engineering productivity tools, and manufacturing automation solutions.
-      </p>
+        <h1>
+          Engineering <span>Automation</span><br>
+          Systems for Manufacturing Workflows
+        </h1>
 
-      <div class="hero-buttons">
+        <p>
+          CAD workflow automation, BOM extraction systems, PDF drawing processing,
+          SolidWorks productivity tools, and manufacturing automation solutions.
+        </p>
 
-        <a href="#projects" class="btn btn-primary">
-          View Projects
-        </a>
+        <div class="hero-buttons">
 
-        <a href="https://github.com/nexusengg" target="_blank" class="btn btn-secondary">
-          GitHub
-        </a>
+          <a href="#projects" class="btn btn-primary">
+            Explore Projects
+          </a>
+
+          <a href="https://github.com/nexusengg" target="_blank" class="btn btn-secondary">
+            GitHub Repository
+          </a>
+
+        </div>
 
       </div>
 
@@ -372,7 +455,7 @@
 
   </section>
 
-  <!-- PROJECTS -->
+  <!-- FEATURED PROJECT -->
 
   <section id="projects">
 
@@ -386,26 +469,43 @@
 
         <div class="project-image">
 
-          <!-- REPLACE THIS IMAGE LATER -->
-          <img src="project1.png" alt="PDF Drawing Extraction System">
+          <!-- IMAGE FILE -->
+          <!-- Upload image in same repo folder -->
+          <!-- Rename image exactly as below -->
+
+          <img src="./pdf-project-showcase.png" alt="PDF Drawing Extraction System">
 
         </div>
 
         <div class="project-content">
 
-          <h3>PDF Drawing Extraction System</h3>
+          <h3>
+            PDF Drawing Extraction System
+          </h3>
 
           <p>
-            Automated engineering drawing and BOM processing workflow designed
-            for manufacturing documentation systems and repetitive engineering tasks.
+            Automated engineering drawing and BOM processing workflow
+            designed for manufacturing documentation systems and
+            repetitive engineering tasks.
           </p>
 
           <div class="feature-list">
 
-            <div class="feature">Batch PDF Processing</div>
-            <div class="feature">Drawing Recognition</div>
-            <div class="feature">Automated Table Detection</div>
-            <div class="feature">Workflow Automation</div>
+            <div class="feature">
+              Batch PDF Processing
+            </div>
+
+            <div class="feature">
+              Drawing Recognition
+            </div>
+
+            <div class="feature">
+              Automated Table Detection
+            </div>
+
+            <div class="feature">
+              Workflow Automation
+            </div>
 
           </div>
 
@@ -421,7 +521,7 @@
 
   </section>
 
-  <!-- FUTURE PROJECTS -->
+  <!-- ROADMAP -->
 
   <section id="future">
 
@@ -434,24 +534,42 @@
       <div class="future-projects">
 
         <div class="placeholder-card">
-          <h4>SolidWorks Automation Suite</h4>
+
+          <h4>
+            SolidWorks Automation Suite
+          </h4>
+
           <p>
-            Batch CAD automation tools, macros, exports, and drawing workflow systems.
+            Batch CAD automation utilities, drawing tools,
+            exports, macros, and engineering workflow systems.
           </p>
+
         </div>
 
         <div class="placeholder-card">
-          <h4>BOM Automation Engine</h4>
+
+          <h4>
+            BOM Automation Engine
+          </h4>
+
           <p>
-            Intelligent BOM extraction and manufacturing documentation workflows.
+            Automated Bill of Materials extraction,
+            validation, and engineering documentation workflows.
           </p>
+
         </div>
 
         <div class="placeholder-card">
-          <h4>Engineering Data Pipeline</h4>
+
+          <h4>
+            Engineering Data Pipeline
+          </h4>
+
           <p>
-            Processing and organizing engineering data across manufacturing systems.
+            Processing and organizing engineering data
+            across manufacturing and CAD systems.
           </p>
+
         </div>
 
       </div>
@@ -468,24 +586,24 @@
 
       <div class="contact-box">
 
-        <h2>Contact</h2>
+        <h2>
+          Let's Build Engineering Automation
+        </h2>
 
         <p>
-          Open to engineering automation projects and workflow optimization collaborations.
+          Open for engineering workflow automation systems,
+          CAD productivity tools, BOM processing,
+          and manufacturing optimization projects.
         </p>
 
         <div class="contact-links">
 
           <a href="mailto:tirtharaj@nexusengg.in" class="btn btn-primary">
-            Email
+            Contact via Email
           </a>
 
           <a href="https://github.com/nexusengg" target="_blank" class="btn btn-secondary">
-            GitHub
-          </a>
-
-          <a href="https://nexusengg.in" target="_blank" class="btn btn-secondary">
-            Website
+            View GitHub
           </a>
 
         </div>
@@ -499,8 +617,11 @@
   <!-- FOOTER -->
 
   <footer>
+
     © 2026 NexusEng Automation • Engineering Workflow Systems
+
   </footer>
 
 </body>
+
 </html>
