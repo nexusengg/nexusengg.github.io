@@ -3,150 +3,504 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nexus Engineering Automation</title>
+  <title>NexusEng Automation</title>
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
-      line-height: 1.6;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
     }
 
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 40px 20px;
+    body{
+      background:#050d22;
+      color:white;
+      overflow-x:hidden;
     }
 
-    h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
+    a{
+      text-decoration:none;
+      color:white;
     }
 
-    h2 {
-      color: #38bdf8;
-      margin-top: 50px;
+    .container{
+      width:90%;
+      max-width:1400px;
+      margin:auto;
     }
 
-    p {
-      color: #cbd5e1;
+    /* NAVBAR */
+
+    nav{
+      position:fixed;
+      width:100%;
+      top:0;
+      z-index:1000;
+      background:rgba(3,10,30,0.92);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,0.08);
     }
 
-    .hero {
-      padding: 100px 0;
+    .nav-wrapper{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 0;
     }
 
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
+    .logo{
+      font-size:28px;
+      font-weight:800;
+      color:#4db8ff;
     }
 
-    .card {
-      background: #1e293b;
-      padding: 25px;
-      border-radius: 12px;
+    .logo span{
+      color:white;
     }
 
-    .contact {
-      margin-top: 60px;
-      padding: 30px;
-      background: #1e293b;
-      border-radius: 12px;
+    .nav-links{
+      display:flex;
+      gap:30px;
     }
 
-    a {
-      color: #38bdf8;
-      text-decoration: none;
+    .nav-links a{
+      color:#d4e4ff;
+      transition:0.3s;
     }
 
-    .tag {
-      display: inline-block;
-      background: #2563eb;
-      padding: 6px 12px;
-      border-radius: 999px;
-      margin-right: 10px;
-      margin-top: 10px;
-      font-size: 14px;
+    .nav-links a:hover{
+      color:#4db8ff;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      position:relative;
+      padding-top:100px;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+      radial-gradient(circle at top left,#0d2c68 0%,transparent 35%),
+      radial-gradient(circle at bottom right,#0f4b6f 0%,transparent 30%);
+      opacity:0.8;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:1;
+      max-width:900px;
+    }
+
+    .hero h1{
+      font-size:72px;
+      line-height:1.1;
+      margin-bottom:25px;
+    }
+
+    .hero h1 span{
+      color:#4db8ff;
+    }
+
+    .hero p{
+      font-size:22px;
+      color:#c8d9f3;
+      line-height:1.7;
+      margin-bottom:40px;
+      max-width:850px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:16px 30px;
+      border-radius:50px;
+      font-weight:700;
+      transition:0.3s;
+    }
+
+    .btn-primary{
+      background:#2575ff;
+    }
+
+    .btn-primary:hover{
+      background:#4a90ff;
+      transform:translateY(-3px);
+    }
+
+    .btn-secondary{
+      border:1px solid rgba(255,255,255,0.2);
+      color:#dbe9ff;
+    }
+
+    .btn-secondary:hover{
+      background:rgba(255,255,255,0.08);
+    }
+
+    /* SECTION */
+
+    section{
+      padding:100px 0;
+    }
+
+    .section-title{
+      font-size:48px;
+      margin-bottom:60px;
+      text-align:center;
+    }
+
+    .section-title span{
+      color:#4db8ff;
+    }
+
+    /* PROJECT CARD */
+
+    .project-card{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:30px;
+      overflow:hidden;
+      padding:40px;
+      align-items:center;
+      transition:0.3s;
+    }
+
+    .project-card:hover{
+      transform:translateY(-8px);
+      border-color:#2575ff;
+      box-shadow:0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .project-image img{
+      width:100%;
+      border-radius:20px;
+      object-fit:cover;
+    }
+
+    .project-content h3{
+      font-size:42px;
+      margin-bottom:20px;
+    }
+
+    .project-content p{
+      color:#c7d7f5;
+      font-size:18px;
+      line-height:1.8;
+      margin-bottom:25px;
+    }
+
+    .feature-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:15px;
+      margin-bottom:35px;
+    }
+
+    .feature{
+      padding:12px 18px;
+      border-radius:40px;
+      background:#112850;
+      color:#7ecbff;
+      font-size:14px;
+      font-weight:700;
+    }
+
+    /* PLACEHOLDER FUTURE PROJECTS */
+
+    .future-projects{
+      margin-top:60px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .placeholder-card{
+      background:rgba(255,255,255,0.03);
+      border:2px dashed rgba(255,255,255,0.15);
+      border-radius:25px;
+      min-height:240px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:30px;
+    }
+
+    .placeholder-card h4{
+      font-size:26px;
+      margin-bottom:12px;
+      color:#7ecbff;
+    }
+
+    .placeholder-card p{
+      color:#aebed9;
+      line-height:1.7;
+    }
+
+    /* CONTACT */
+
+    .contact-box{
+      text-align:center;
+      background:rgba(255,255,255,0.04);
+      border-radius:30px;
+      padding:60px 30px;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .contact-box h2{
+      font-size:42px;
+      margin-bottom:20px;
+    }
+
+    .contact-box p{
+      color:#c8d9f3;
+      font-size:18px;
+      margin-bottom:25px;
+    }
+
+    .contact-links{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    footer{
+      padding:40px 0;
+      text-align:center;
+      color:#9db3d7;
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+
+    @media(max-width:950px){
+
+      .hero h1{
+        font-size:50px;
+      }
+
+      .project-card{
+        grid-template-columns:1fr;
+      }
+
+      .nav-links{
+        display:none;
+      }
+    }
+
+    @media(max-width:600px){
+
+      .hero h1{
+        font-size:40px;
+      }
+
+      .section-title{
+        font-size:36px;
+      }
+
+      .project-content h3{
+        font-size:30px;
+      }
     }
 
   </style>
 </head>
+
 <body>
 
-  <div class="container">
+  <!-- NAVBAR -->
 
-    <section class="hero">
-      <h1>Nexus Engineering Automation</h1>
+  <nav>
+    <div class="container nav-wrapper">
+
+      <div class="logo">
+        Nexus<span>Eng</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#future">Roadmap</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="container hero-content">
+
+      <h1>
+        Engineering <span>Automation</span><br>
+        Systems for Manufacturing Workflows
+      </h1>
 
       <p>
-        Engineering automation tools for manufacturing workflows,
-        CAD systems, BOM processing, drawing extraction,
-        and productivity optimization.
+        CAD workflow automation, BOM extraction systems, PDF drawing processing,
+        engineering productivity tools, and manufacturing automation solutions.
       </p>
 
-      <div>
-        <span class="tag">SolidWorks Automation</span>
-        <span class="tag">BOM Extraction</span>
-        <span class="tag">PDF Processing</span>
-        <span class="tag">Manufacturing Workflows</span>
-      </div>
-    </section>
+      <div class="hero-buttons">
 
-    <section>
-      <h2>Services</h2>
+        <a href="#projects" class="btn btn-primary">
+          View Projects
+        </a>
 
-      <div class="card-grid">
-
-        <div class="card">
-          <h3>BOM Automation</h3>
-          <p>
-            Automated extraction and processing of Bill of Materials data
-            from engineering files and drawings.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>SolidWorks Tools</h3>
-          <p>
-            Custom automation utilities for repetitive CAD workflows
-            and engineering productivity improvements.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Drawing Processing</h3>
-          <p>
-            PDF and drawing-based data extraction systems
-            for manufacturing and documentation workflows.
-          </p>
-        </div>
+        <a href="https://github.com/nexusengg" target="_blank" class="btn btn-secondary">
+          GitHub
+        </a>
 
       </div>
-    </section>
 
-    <section class="contact">
-      <h2>Contact</h2>
+    </div>
 
-      <p>
-        Email:
-        <a href="mailto:tirtharaj@nexusengg.in">
-          tirtharaj@nexusengg.in
-        </a>
-      </p>
+  </section>
 
-      <p>
-        GitHub:
-        <a href="https://github.com/nexusengg" target="_blank">
-          github.com/nexusengg
-        </a>
-      </p>
-    </section>
+  <!-- PROJECTS -->
 
-  </div>
+  <section id="projects">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Featured <span>Project</span>
+      </h2>
+
+      <div class="project-card">
+
+        <div class="project-image">
+
+          <!-- REPLACE THIS IMAGE LATER -->
+          <img src="project1.png" alt="PDF Drawing Extraction System">
+
+        </div>
+
+        <div class="project-content">
+
+          <h3>PDF Drawing Extraction System</h3>
+
+          <p>
+            Automated engineering drawing and BOM processing workflow designed
+            for manufacturing documentation systems and repetitive engineering tasks.
+          </p>
+
+          <div class="feature-list">
+
+            <div class="feature">Batch PDF Processing</div>
+            <div class="feature">Drawing Recognition</div>
+            <div class="feature">Automated Table Detection</div>
+            <div class="feature">Workflow Automation</div>
+
+          </div>
+
+          <a href="https://github.com/nexusengg" target="_blank" class="btn btn-primary">
+            View Project
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FUTURE PROJECTS -->
+
+  <section id="future">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Upcoming <span>Systems</span>
+      </h2>
+
+      <div class="future-projects">
+
+        <div class="placeholder-card">
+          <h4>SolidWorks Automation Suite</h4>
+          <p>
+            Batch CAD automation tools, macros, exports, and drawing workflow systems.
+          </p>
+        </div>
+
+        <div class="placeholder-card">
+          <h4>BOM Automation Engine</h4>
+          <p>
+            Intelligent BOM extraction and manufacturing documentation workflows.
+          </p>
+        </div>
+
+        <div class="placeholder-card">
+          <h4>Engineering Data Pipeline</h4>
+          <p>
+            Processing and organizing engineering data across manufacturing systems.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="container">
+
+      <div class="contact-box">
+
+        <h2>Contact</h2>
+
+        <p>
+          Open to engineering automation projects and workflow optimization collaborations.
+        </p>
+
+        <div class="contact-links">
+
+          <a href="mailto:tirtharaj@nexusengg.in" class="btn btn-primary">
+            Email
+          </a>
+
+          <a href="https://github.com/nexusengg" target="_blank" class="btn btn-secondary">
+            GitHub
+          </a>
+
+          <a href="https://nexusengg.in" target="_blank" class="btn btn-secondary">
+            Website
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 NexusEng Automation • Engineering Workflow Systems
+  </footer>
 
 </body>
 </html>
